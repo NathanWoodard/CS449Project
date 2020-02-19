@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/calorie"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:text="Calorie" />
+
+    <Button
+        android:id="@+id/workout"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:text="Workout"
+        android:layout_below="@+id/calorie"/>
+    <Button
+        android:id="@+id/sleep"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:text="Sleep"
+        android:layout_below="@+id/workout"/>
+    <Button
+        android:id="@+id/weight"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:text="Weight"
+        android:layout_below="@+id/sleep"/>
+
+</RelativeLayout>
