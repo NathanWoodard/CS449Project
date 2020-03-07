@@ -6,33 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Calorie">
 
-    <EditText
-        android:id="@+id/CurrentCalories"
-        android:layout_width="179dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="392dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0"></EditText>
-
-    <EditText
-        android:id="@+id/MaxCalories"
-        android:layout_width="179dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="372dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"></EditText>
-
     <TextView
         android:id="@+id/textView"
-        android:layout_width="178dp"
+        android:layout_width="177dp"
         android:layout_height="32dp"
-        android:layout_marginTop="276dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="16dp"
         android:text="Current Calories"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,9 +20,62 @@
         android:id="@+id/textView2"
         android:layout_width="177dp"
         android:layout_height="34dp"
-        android:layout_marginTop="276dp"
-        android:text="Maximum Calores"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="184dp"
+        android:text="Maximum Calories"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="177dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="116dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="96dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="177dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="117dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="Change Maximum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
