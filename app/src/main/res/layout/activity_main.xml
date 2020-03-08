@@ -10,48 +10,61 @@
     <Button
         android:id="@+id/calorie"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:text="Calorie"
+        android:layout_height="0dp"
         android:onClick="btnCal"
-        app:layout_constraintBottom_toTopOf="@+id/workout"
+        android:text="Calorie"
+        android:backgroundTint="@android:color/holo_green_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005"
+        app:layout_constraintHeight_percent=".25"/>
 
     <Button
         android:id="@+id/workout"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/calorie"
-        android:layout_marginTop="1dp"
+        android:backgroundTint="@android:color/holo_red_light"
         android:text="Workout"
-        app:layout_constraintBottom_toTopOf="@+id/sleep"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calorie" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.332"
+        app:layout_constraintHeight_percent=".25"/>
 
     <Button
         android:id="@+id/sleep"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/workout"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="8dp"
         android:text="Sleep"
-        app:layout_constraintBottom_toTopOf="@+id/weight"
+        android:backgroundTint="@android:color/holo_blue_light"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workout" />
+        app:layout_constraintTop_toTopOf="@+id/calorie"
+        app:layout_constraintVertical_bias="0.656"
+        app:layout_constraintHeight_percent=".25"/>
 
     <Button
         android:id="@+id/weight"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/sleep"
         android:text="Weight"
+        android:backgroundTint="@android:color/holo_orange_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sleep" />
+        app:layout_constraintTop_toTopOf="@+id/calorie"
+        app:layout_constraintVertical_bias="0.985"
+        app:layout_constraintHeight_percent=".25"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

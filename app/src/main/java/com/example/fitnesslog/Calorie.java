@@ -18,6 +18,7 @@ public class Calorie extends AppCompatActivity {
     Button addCalorieButton;
     TextView currentCalorieText;
     EditText addCalorieEdit;
+    Button resetButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +36,25 @@ public class Calorie extends AppCompatActivity {
                     addCalorieButton.setText("CONFIRM");
                 }
                 else{
-                    currentCalorieText.setText(String.valueOf(Integer.parseInt(currentCalorieText.getText().toString()) + Integer.parseInt(addCalorieEdit.getText().toString())));
+                    try {
+                        currentCalorieText.setText(String.valueOf(Integer.parseInt(currentCalorieText.getText().toString()) + Integer.parseInt(addCalorieEdit.getText().toString())));
+                    }
+                    catch(NumberFormatException e){
+                        //does nothing if the user does not input a number at all cause for some reason java doesnt interpret an empty string as 0 when you parseint it
+                    }
                     currentCalorieText.setVisibility(View.VISIBLE);
                     addCalorieEdit.getText().clear();
                     addCalorieEdit.setVisibility(View.GONE);
                     addCalorieButton.setText("ADD CALORIES");
                 }
+            }
+        });
+
+        resetButton = findViewById(R.id.resetbutton);
+        resetButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                currentCalorieText.setText("0");
             }
         });
         maxCalorieEdit = findViewById(R.id.editText2);
