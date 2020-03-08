@@ -2,6 +2,8 @@ package com.example.fitnesslog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.MenuItem;
 import android.os.Bundle;
 import android.view.View;
@@ -65,7 +67,18 @@ public class Calorie extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-
+    private void saveData(){
+        SharedPreferences sp = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt("currentCalorie", Integer.parseInt(currentCalorieText.getText().toString()));
+        editor.putInt("maxCalorie", Integer.parseInt(maxCalorieText.getText().toString()));
+        editor.commit();
+    }
+    private void loadData(){
+        SharedPreferences sp = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        currentCalorieText.setText(String.valueOf(sp.getInt("currentCalorie", 0)));
+        maxCalorieText.setText(String.valueOf(sp.getInt("maxCalorie", 0)));
+    }
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
 
@@ -74,5 +87,15 @@ public class Calorie extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        saveData();
+    }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        loadData();
+    }
 }
