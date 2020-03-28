@@ -4,14 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.view.MenuItem;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class Calorie extends AppCompatActivity {
+    private static final String FILE_NAME = "calorie.txt";
+
+    TextView mTextView;
+
     Button maxCalorieButton;
     TextView maxCalorieText;
     EditText maxCalorieEdit;
@@ -19,6 +32,8 @@ public class Calorie extends AppCompatActivity {
     TextView currentCalorieText;
     EditText addCalorieEdit;
     Button resetButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +94,8 @@ public class Calorie extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mTextView = findViewById(R.id.textView4);
     }
 
     private void saveData(){
@@ -100,6 +117,39 @@ public class Calorie extends AppCompatActivity {
             this.finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void save(View v){
+        String text = mTextView.getText().toString();
+        FileOutputStream fos = null;
+
+        mTextView.setText("0");
+        Toast.makeText(this, "Saved to " + getFilesDir() + "/" + FILE_NAME,
+                Toast.LENGTH_LONG).show();
+
+        try {
+            Calendar c = Calendar.getInstance();
+            fos = openFileOutput(FILE_NAME , MODE_APPEND);
+            fos.write(text.getBytes());
+            text = "\n";
+            fos.write(text.getBytes());
+            String dayLongName = c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+            fos.write(dayLongName.getBytes());
+            text = "\n";
+            fos.write(text.getBytes());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally{
+            if(fos != null){
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
     @Override
     protected void onPause(){
