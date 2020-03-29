@@ -88,17 +88,17 @@ public class CalorieLog extends AppCompatActivity {
         }
         */
         c.clone(scroll);
-        c.connect(test[0].getId(), ConstraintSet.TOP, R.id.info, ConstraintSet.TOP);
+        c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
         c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.info, ConstraintSet.LEFT);
-        c.connect(test[1].getId(), ConstraintSet.TOP, R.id.info, ConstraintSet.TOP);
+        c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
         c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.info, ConstraintSet.RIGHT);
         for(int i = 2;i<100;i+=2){
             if(test[i]==null){
                 break;
             }
-            c.connect(test[i].getId(), ConstraintSet.TOP, test[i-2].getId(), ConstraintSet.BOTTOM);
+            c.connect(test[i].getId(), ConstraintSet.BOTTOM, test[i-2].getId(), ConstraintSet.TOP);
             c.connect(test[i].getId(), ConstraintSet.START, R.id.info, ConstraintSet.START);
-            c.connect(test[i+1].getId(), ConstraintSet.TOP, test[i-2].getId(), ConstraintSet.BOTTOM);
+            c.connect(test[i+1].getId(), ConstraintSet.BOTTOM, test[i-2].getId(), ConstraintSet.TOP);
             c.connect(test[i+1].getId(), ConstraintSet.END, R.id.info, ConstraintSet.END);
         }
         c.applyTo(scroll);
