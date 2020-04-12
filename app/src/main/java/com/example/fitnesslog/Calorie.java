@@ -154,8 +154,8 @@ public class Calorie extends AppCompatActivity {
     }
 
     public void openCalorieLog(View v) {
-    Intent intent = new Intent(this, CalorieLog.class);
-    startActivity(intent);
+        Intent intent = new Intent(this, CalorieLog.class);
+        startActivity(intent);
     }
     @Override
     protected void onPause(){

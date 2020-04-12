@@ -21,9 +21,9 @@ public class WeightLog extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight_log);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.weighttoolbar);
         setSupportActionBar(toolbar);
-        ConstraintLayout scroll = findViewById(R.id.info);
+        ConstraintLayout scroll = findViewById(R.id.weightlayout);
         ConstraintSet c = new ConstraintSet();
 
         FileInputStream fis = null;
@@ -48,14 +48,14 @@ public class WeightLog extends AppCompatActivity {
                     day_view.setTextSize(30);
                     scroll.addView(day_view);
                     test[i] = day_view;
-                    TextView cal_view = new TextView(this);
-                    cal_view.setText(weight);
-                    cal_view.setId(View.generateViewId());
-                    ConstraintLayout.LayoutParams cal_params = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-                    cal_view.setLayoutParams(cal_params);
-                    cal_view.setTextSize(30);
-                    scroll.addView(cal_view);
-                    test[i+1] = cal_view;
+                    TextView weight_view = new TextView(this);
+                    weight_view.setText(weight);
+                    weight_view.setId(View.generateViewId());
+                    ConstraintLayout.LayoutParams weight_params = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+                    weight_view.setLayoutParams(weight_params);
+                    weight_view.setTextSize(30);
+                    scroll.addView(weight_view);
+                    test[i+1] = weight_view;
                     i+=2;
                 }
 
@@ -74,18 +74,18 @@ public class WeightLog extends AppCompatActivity {
         }
 
         c.clone(scroll);
-        c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
-        c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.info, ConstraintSet.LEFT);
-        c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
-        c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.info, ConstraintSet.RIGHT);
+        c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.weightlayout, ConstraintSet.BOTTOM);
+        c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.weightlayout, ConstraintSet.LEFT);
+        c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.weightlayout, ConstraintSet.BOTTOM);
+        c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.weightlayout, ConstraintSet.RIGHT);
         for(int i = 2;i<100;i+=2){
             if(test[i]==null){
                 break;
             }
             c.connect(test[i].getId(), ConstraintSet.BOTTOM, test[i-2].getId(), ConstraintSet.TOP);
-            c.connect(test[i].getId(), ConstraintSet.START, R.id.info, ConstraintSet.START);
+            c.connect(test[i].getId(), ConstraintSet.START, R.id.weightlayout, ConstraintSet.START);
             c.connect(test[i+1].getId(), ConstraintSet.BOTTOM, test[i-2].getId(), ConstraintSet.TOP);
-            c.connect(test[i+1].getId(), ConstraintSet.END, R.id.info, ConstraintSet.END);
+            c.connect(test[i+1].getId(), ConstraintSet.END, R.id.weightlayout, ConstraintSet.END);
         }
         c.applyTo(scroll);
 

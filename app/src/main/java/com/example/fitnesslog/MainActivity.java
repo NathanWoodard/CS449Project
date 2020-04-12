@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         sleepButton = findViewById(R.id.sleep);
-        workoutButton.setOnClickListener(new View.OnClickListener(){
+        sleepButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 openSleep();
             }
         });
         weightButton = findViewById(R.id.weight);
-        workoutButton.setOnClickListener(new View.OnClickListener(){
+        weightButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 openWeight();
