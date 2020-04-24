@@ -10,13 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".SleepLog"
+            android:label="@string/title_activity_sleep_log"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".CalorieLog"
             android:label="@string/title_activity_calorie_log"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WeightLog"
             android:label="WeightLog"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Weight" />
         <activity android:name=".Sleep" />
         <activity android:name=".Workout" />
