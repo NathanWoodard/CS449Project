@@ -1,9 +1,7 @@
 package com.example.fitnesslog;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -35,7 +33,6 @@ public class CalorieLog extends AppCompatActivity {
             fis = openFileInput(FILE_NAME);
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
-            // StringBuilder sb = new StringBuilder();
             String day, calories;
             int i = 0;
             while ((calories = br.readLine()) != null) {
@@ -76,17 +73,7 @@ public class CalorieLog extends AppCompatActivity {
                 }
             }
         }
-        /*for(int i=0;i<100;i++){
-            TextView temp = new TextView(this);
-            temp.setText("1");
-            temp.setId(View.generateViewId());
-            temp.setLayoutParams(new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT));
-            scroll.addView(temp);
-            test[i] = temp;
 
-
-        }
-        */
         c.clone(scroll);
         c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
         c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.info, ConstraintSet.LEFT);
@@ -105,31 +92,6 @@ public class CalorieLog extends AppCompatActivity {
 
     }
 
-    /*public TextView[] load() {
-        FileInputStream fis = null;
-        TextView[] logs;
-        try {
-            fis = openFileInput("calorie.txt");
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-            // StringBuilder sb = new StringBuilder();
-            String day, calories;
 
-            while ((calories = br.readLine()) != null) {
-                day = br.readLine();
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fis != null) {
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }*/
 
 }

@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".SleepLog"
-    tools:showIn="@layout/activity_sleep_log">
+    tools:context=".WorkoutLog"
+    tools:showIn="@layout/activity_workout_log">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sleeplayout"
+        android:id="@+id/workoutlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.core.widget.NestedScrollView>

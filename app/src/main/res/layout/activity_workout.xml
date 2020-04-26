@@ -6,4 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".Workout">
 
+    <Button
+        android:id="@+id/addworkoutbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add Workout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.221" />
+
+    <TextView
+        android:id="@+id/workouttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/workouttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/workouttext"
+        app:layout_constraintEnd_toEndOf="@+id/workouttext"
+        app:layout_constraintStart_toStartOf="@+id/workouttext"
+        app:layout_constraintTop_toTopOf="@+id/workouttext"
+        android:visibility="gone"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/workouttype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textAutoCorrect"
+        app:layout_constraintBottom_toBottomOf="@+id/workouttext"
+        app:layout_constraintEnd_toEndOf="@+id/workouttext"
+        app:layout_constraintStart_toStartOf="@+id/workouttext"
+        app:layout_constraintTop_toTopOf="@+id/workouttext"
+        android:visibility="gone"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/workoutheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Workout Length (Minutes)"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.074" />
+
+    <Button
+        android:id="@+id/workoutlogbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="workout log"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:onClick="openWorkoutLog"/>
+
+    <Button
+        android:id="@+id/submitworkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.221" />
 </androidx.constraintlayout.widget.ConstraintLayout>
