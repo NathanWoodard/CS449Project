@@ -28,7 +28,7 @@ public class WorkoutLog extends AppCompatActivity {
         setContentView(R.layout.activity_workout_log);
         Toolbar toolbar = (Toolbar) findViewById(R.id.workouttoolbar);
         setSupportActionBar(toolbar);
-        ConstraintLayout scroll = findViewById(R.id.info);
+        ConstraintLayout scroll = findViewById(R.id.workoutlayout);
         ConstraintSet c = new ConstraintSet();
 
         FileInputStream fis = null;
@@ -73,18 +73,18 @@ public class WorkoutLog extends AppCompatActivity {
         }
 
         c.clone(scroll);
-        c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
-        c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.info, ConstraintSet.LEFT);
-        c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
-        c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.info, ConstraintSet.RIGHT);
+        c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.workoutlayout, ConstraintSet.BOTTOM);
+        c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.workoutlayout, ConstraintSet.LEFT);
+        c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.workoutlayout, ConstraintSet.BOTTOM);
+        c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.workoutlayout, ConstraintSet.RIGHT);
         for (int i = 2; i < 100; i += 2) {
             if (test[i] == null) {
                 break;
             }
             c.connect(test[i].getId(), ConstraintSet.BOTTOM, test[i - 2].getId(), ConstraintSet.TOP);
-            c.connect(test[i].getId(), ConstraintSet.START, R.id.info, ConstraintSet.START);
+            c.connect(test[i].getId(), ConstraintSet.START, R.id.workoutlayout, ConstraintSet.START);
             c.connect(test[i + 1].getId(), ConstraintSet.BOTTOM, test[i - 2].getId(), ConstraintSet.TOP);
-            c.connect(test[i + 1].getId(), ConstraintSet.END, R.id.info, ConstraintSet.END);
+            c.connect(test[i + 1].getId(), ConstraintSet.END, R.id.workoutlayout, ConstraintSet.END);
         }
         c.applyTo(scroll);
 
