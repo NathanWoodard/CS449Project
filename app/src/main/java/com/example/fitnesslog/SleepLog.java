@@ -2,6 +2,7 @@ package com.example.fitnesslog;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import java.io.InputStreamReader;
 
 public class SleepLog extends AppCompatActivity {
     TextView[] test = new TextView[100];
+    TextView avgsleep;
     private static final String FILE_NAME = "sleep.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class SleepLog extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ConstraintLayout scroll = findViewById(R.id.sleeplayout);
         ConstraintSet c = new ConstraintSet();
-
+        avgsleep = findViewById(R.id.avgsleep);
         FileInputStream fis = null;
         try {
             fis = openFileInput(FILE_NAME);
@@ -72,12 +74,15 @@ public class SleepLog extends AppCompatActivity {
                 }
             }
         }
-
+        int total = 0;
+        int count = 0;
         c.clone(scroll);
         c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.sleeplayout, ConstraintSet.BOTTOM);
         c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.sleeplayout, ConstraintSet.LEFT);
         c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.sleeplayout, ConstraintSet.BOTTOM);
         c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.sleeplayout, ConstraintSet.RIGHT);
+        total += Integer.parseInt(test[1].getText().toString());
+        count++;
         for(int i = 2;i<100;i+=2){
             if(test[i]==null){
                 break;
@@ -86,7 +91,10 @@ public class SleepLog extends AppCompatActivity {
             c.connect(test[i].getId(), ConstraintSet.START, R.id.sleeplayout, ConstraintSet.START);
             c.connect(test[i+1].getId(), ConstraintSet.BOTTOM, test[i-2].getId(), ConstraintSet.TOP);
             c.connect(test[i+1].getId(), ConstraintSet.END, R.id.sleeplayout, ConstraintSet.END);
+            total += Integer.parseInt(test[i+1].getText().toString());
+            count++;
         }
+        avgsleep.setText("Average Sleep: " + total/count);
         c.applyTo(scroll);
 
     }

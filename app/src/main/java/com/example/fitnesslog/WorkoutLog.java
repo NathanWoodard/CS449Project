@@ -17,19 +17,25 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.*;
 
 public class WorkoutLog extends AppCompatActivity {
     TextView[] test = new TextView[200];
+    Hashtable<String, Integer> fav_work = new Hashtable<String, Integer>();
     private static final String FILE_NAME = "workout.txt";
+    TextView fav_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_log);
+
+        fav_text = findViewById(R.id.favtext);
         Toolbar toolbar = (Toolbar) findViewById(R.id.workouttoolbar);
         setSupportActionBar(toolbar);
         ConstraintLayout scroll = findViewById(R.id.workoutlayout);
         ConstraintSet c = new ConstraintSet();
+
 
         FileInputStream fis = null;
         try {
@@ -51,6 +57,15 @@ public class WorkoutLog extends AppCompatActivity {
                 TextView workout_view = new TextView(this);
                 workout_view.setText(activity);
                 workout_view.setId(View.generateViewId());
+                if(activity.indexOf("Total") != -1){
+                }
+                else if (fav_work.get(activity) == null) {
+                    fav_work.put(activity.substring(0, activity.indexOf(" ")), 1);
+                }
+                else {
+                    int amount = fav_work.get(activity.substring(0, activity.indexOf(" ")));
+                    fav_work.put(activity, amount + 1);
+                }
                 ConstraintLayout.LayoutParams workout_params = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
                 workout_view.setLayoutParams(workout_params);
                 workout_view.setTextSize(30);
@@ -71,13 +86,22 @@ public class WorkoutLog extends AppCompatActivity {
                 }
             }
         }
+        String maxKey = "";
+        int maxValue = 0;
+        for(Map.Entry<String,Integer> entry : fav_work.entrySet()) {
+            if(entry.getValue() > maxValue) {
+                maxValue = entry.getValue();
+                maxKey = entry.getKey();
+            }
+        }
+        fav_text.setText("Favorite Workout: " + maxKey);
 
         c.clone(scroll);
         c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.workoutlayout, ConstraintSet.BOTTOM);
         c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.workoutlayout, ConstraintSet.LEFT);
         c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.workoutlayout, ConstraintSet.BOTTOM);
         c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.workoutlayout, ConstraintSet.RIGHT);
-        for (int i = 2; i < 100; i += 2) {
+        for (int i = 2; i < 200; i += 2) {
             if (test[i] == null) {
                 break;
             }

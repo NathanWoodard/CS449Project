@@ -18,11 +18,13 @@ import java.io.InputStreamReader;
 
 public class CalorieLog extends AppCompatActivity {
     TextView[] test = new TextView[100];
+    TextView avgcal;
     private static final String FILE_NAME = "calorie.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calorie_log);
+        avgcal = findViewById(R.id.avgcal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ConstraintLayout scroll = findViewById(R.id.info);
@@ -74,11 +76,15 @@ public class CalorieLog extends AppCompatActivity {
             }
         }
 
+        int total = 0;
+        int count = 0;
         c.clone(scroll);
         c.connect(test[0].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
         c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.info, ConstraintSet.LEFT);
         c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.info, ConstraintSet.BOTTOM);
         c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.info, ConstraintSet.RIGHT);
+        total += Integer.parseInt(test[1].getText().toString());
+        count++;
         for(int i = 2;i<100;i+=2){
             if(test[i]==null){
                 break;
@@ -87,7 +93,10 @@ public class CalorieLog extends AppCompatActivity {
             c.connect(test[i].getId(), ConstraintSet.START, R.id.info, ConstraintSet.START);
             c.connect(test[i+1].getId(), ConstraintSet.BOTTOM, test[i-2].getId(), ConstraintSet.TOP);
             c.connect(test[i+1].getId(), ConstraintSet.END, R.id.info, ConstraintSet.END);
+            total += Integer.parseInt(test[i+1].getText().toString());
+            count++;
         }
+        avgcal.setText("Average Calories: " + total/count);
         c.applyTo(scroll);
 
     }
