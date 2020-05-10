@@ -23,7 +23,7 @@ import java.util.Locale;
 
 public class Workout extends AppCompatActivity {
     private static String FILE_NAME = "workout.txt";
-
+    TextView workoutHeader;
     TextView workoutText;
     EditText stringEdit;
     EditText numberEdit;
@@ -37,6 +37,7 @@ public class Workout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
 
+        workoutHeader = findViewById(R.id.workoutheader);
         workoutText = findViewById(R.id.workouttext);
         stringEdit = findViewById(R.id.workouttype);
         numberEdit = findViewById(R.id.workouttime);
@@ -51,24 +52,29 @@ public class Workout extends AppCompatActivity {
                     workoutText.setVisibility(View.GONE);
                     stringEdit.setVisibility(View.VISIBLE);
                     addButton.setText("CONFIRM");
+                    workoutHeader.setText("Activity");
                 }
                 else if(stringEdit.getVisibility() == View.VISIBLE){
+                    workoutHeader.setText("Duration (Minutes)");
                     stringEdit.setVisibility(View.GONE);
                     numberEdit.setVisibility(View.VISIBLE);
                 }
                 else {
+                    workoutHeader.setText("Duration (Minutes)");
                     try {
                         workoutText.setText(String.valueOf(Integer.parseInt(workoutText.getText().toString()) + Integer.parseInt(numberEdit.getText().toString())));
 
                     } catch (NumberFormatException e) {
                         //does nothing if the user does not input a number at all cause for some reason java doesnt interpret an empty string as 0 when you parseint it
                     }
+                    //workoutText.setText("Workout Length (Minutes)");
                     workoutText.setVisibility(View.VISIBLE);
                     numberEdit.setVisibility(View.GONE);
                     addButton.setText("ADD WORKOUT");
                     save(numberEdit.getText().toString(), stringEdit.getText().toString());
                     numberEdit.getText().clear();
                     stringEdit.getText().clear();
+                    workoutHeader.setText("Workout Length (Minutes)");
                 }
             }
         });

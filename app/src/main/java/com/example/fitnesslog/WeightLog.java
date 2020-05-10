@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 
 public class WeightLog extends AppCompatActivity {
     TextView[] test = new TextView[100];
+    TextView weighttext;
     private static final String FILE_NAME = "weight.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class WeightLog extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ConstraintLayout scroll = findViewById(R.id.weightlayout);
         ConstraintSet c = new ConstraintSet();
+
+        weighttext = findViewById(R.id.weightchange);
 
         FileInputStream fis = null;
         try {
@@ -36,10 +39,6 @@ public class WeightLog extends AppCompatActivity {
             int i = 0;
             while ((weight = br.readLine()) != null) {
                 day = br.readLine();
-                if(i !=0 && test[i - 2].getText().toString().equals(day)){
-                    test[i-1].setText(String.valueOf(Integer.parseInt(test[i-1].getText().toString()) + Integer.parseInt(weight)));
-                }
-                else{
                     TextView day_view = new TextView(this);
                     day_view.setText(day);
                     day_view.setId(View.generateViewId());
@@ -57,7 +56,6 @@ public class WeightLog extends AppCompatActivity {
                     scroll.addView(weight_view);
                     test[i+1] = weight_view;
                     i+=2;
-                }
 
 
             }
@@ -78,7 +76,8 @@ public class WeightLog extends AppCompatActivity {
         c.connect(test[0].getId(), ConstraintSet.LEFT, R.id.weightlayout, ConstraintSet.LEFT);
         c.connect(test[1].getId(), ConstraintSet.BOTTOM, R.id.weightlayout, ConstraintSet.BOTTOM);
         c.connect(test[1].getId(), ConstraintSet.RIGHT, R.id.weightlayout, ConstraintSet.RIGHT);
-        for(int i = 2;i<100;i+=2){
+        int i;
+        for(i = 2;i<100;i+=2){
             if(test[i]==null){
                 break;
             }
@@ -87,6 +86,9 @@ public class WeightLog extends AppCompatActivity {
             c.connect(test[i+1].getId(), ConstraintSet.BOTTOM, test[i-2].getId(), ConstraintSet.TOP);
             c.connect(test[i+1].getId(), ConstraintSet.END, R.id.weightlayout, ConstraintSet.END);
         }
+        i--;
+        int weightchange = Integer.valueOf(test[i].getText().toString()) - Integer.valueOf(test[i-2].getText().toString());
+        weighttext.setText("Most Recent Weight Change: " + weightchange);
         c.applyTo(scroll);
 
     }
