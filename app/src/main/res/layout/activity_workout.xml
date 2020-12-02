@@ -10,6 +10,7 @@
         android:id="@+id/addworkoutbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#CDDC39"
         android:text="add Workout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,19 +73,21 @@
         android:id="@+id/workoutlogbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="openWorkoutLog"
         android:text="workout log"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:onClick="openWorkoutLog"/>
+        app:layout_constraintVertical_bias="0.499"
+        tools:backgroundTint="#4CAF50" />
 
     <Button
         android:id="@+id/submitworkout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
         android:text="Reset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -68,7 +68,7 @@ public class Sleep extends AppCompatActivity {
                     currentSleepInput.setVisibility(View.VISIBLE);
                     userInputSleep.getText().clear();
                     userInputSleep.setVisibility(View.GONE);
-                    setSleep.setText("SET WEIGHT");
+                    setSleep.setText("SET Sleep");
                 }
             }
         });
