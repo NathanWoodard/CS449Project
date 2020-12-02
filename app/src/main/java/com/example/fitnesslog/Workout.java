@@ -84,6 +84,8 @@ public class Workout extends AppCompatActivity {
                 save(workoutText.getText().toString(), "Total");
             }
         });
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     public void save(String numberText, String stringText) {
         String newline = "\n";
@@ -117,6 +119,14 @@ public class Workout extends AppCompatActivity {
                 }
             }
         }
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
     private void saveData() {
         SharedPreferences sp = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
